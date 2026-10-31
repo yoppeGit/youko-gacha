@@ -4,140 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>妖狐煙屋 お会計ガチャ</title>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f4f9f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            background: white;
-            border-radius: 12px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
-            box-sizing: border-box;
-            border: 3px solid #00873c; /* サイゼグリーン */
-        }
-        h1 {
-            color: #d2143a; /* サイゼレッド */
-            margin-top: 0;
-            font-size: 24px;
-        }
-        .subtitle {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 25px;
-        }
-        
-        /* 追加：ボタン上部の入力欄エリア */
-        .setting-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 0 5px;
-        }
-        .setting-group {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 15px;
-            font-weight: bold;
-        }
-        select, input[type="number"] {
-            padding: 8px 12px;
-            font-size: 15px;
-            border: 2px solid #ccc;
-            border-radius: 6px;
-            outline: none;
-            box-sizing: border-box;
-        }
-        select:focus, input[type="number"]:focus {
-            border-color: #00873c;
-        }
-        input[type="number"] {
-            width: 90px;
-            text-align: right;
-        }
-
-        .btn {
-            background-color: #00873c;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 4px 0 #005a28;
-            transition: transform 0.1s;
-        }
-        .btn:active {
-            transform: translateY(4px);
-            box-shadow: none;
-        }
-        .result-container {
-            margin-top: 30px;
-            text-align: left;
-            display: none;
-        }
-        .result-title {
-            font-weight: bold;
-            font-size: 16px;
-            border-bottom: 2px solid #00873c;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-        .menu-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed #ddd;
-            font-size: 15px;
-        }
-        .total-container {
-            margin-top: 20px;
-            background: #fff0f2;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #d2143a;
-        }
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        .final-total {
-            font-size: 20px;
-            font-weight: bold;
-            color: #d2143a;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <div class="container">
         <h1>妖狐煙屋 お会計ガチャ</h1>
         <p class="subtitle">ランダムで予算額のギリギリを攻めます</p>
         
-        <!-- 追加：お会計ボタンの上側に配置する設定エリア -->
         <div class="setting-container">
-            <!-- 左上側：プルダウン -->
             <div class="setting-group">
                 <label for="budget-type">予算</label>
                 <select id="budget-type">
@@ -145,35 +21,26 @@
                     <option value="min">最低</option>
                 </select>
             </div>
-            <!-- 右上側：テキストボックス -->
             <div class="setting-group">
-                <input type="number" id="budget-amount" value="1000" min="100" step="50">
-                <span>円</span>
+                <input type="number" id="budget-amount" value="5000" min="0" step="50">
+                <span>円 / </span>
+            </div>
+            <div class="setting-group">
+                <input type="number" id="stay-hours" value="2" max="7" min="1" step="1">
+                <span>時間</span>
             </div>
         </div>
+
+        <p class="subtitle">
+            「最高」は予算内に収めたい場合、「最低」はイベント総計特典を目指す場合に選択してください。<br>
+            滞在時間は1～7時間です。
+        </p>
 
         <button class="btn" id="gacha-btn">お会計</button>
 
         <div class="result-container" id="result-area">
             <div class="result-title">ガチャ結果</div>
-            <ul class="menu-list" id="menu-list">
-                <!-- ここに結果がJavaScriptで挿入されます -->
-            </ul>
-            
-            <div class="total-container">
-                <div class="total-row">
-                    <span>合計金額:</span>
-                    <span class="final-total" id="total-price">0円</span>
-                </div>
-                <div class="total-row" style="font-size: 13px; color: #666;">
-                    <span>差額（またはお釣り）:</span>
-                    <span id="change-price">0円</span>
-                </div>
-                <div class="total-row" style="font-size: 13px; color: #666;">
-                    <span>総カロリー:</span>
-                    <span id="total-calories">0 kcal</span>
-                </div>
-            </div>
+            <div id="result-content"></div>
         </div>
     </div>
 

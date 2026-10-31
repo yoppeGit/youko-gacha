@@ -1,0 +1,159 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f9f4;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container {
+    max-width: 500px;
+    width: 100%;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    box-sizing: border-box;
+    border: 3px solid #8e3add;
+}
+h1 {
+    color: #8e3add;
+    margin-top: 0;
+    font-size: 24px;
+}
+.subtitle {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.setting-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 5px;
+}
+.setting-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+select, input[type="number"] {
+    padding: 8px 12px;
+    font-size: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+}
+select:focus, input[type="number"]:focus {
+    border-color: #00873c;
+}
+input[type="number"] {
+    width: 90px;
+    text-align: right;
+}
+
+.btn {
+    background-color: #8e3add;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 4px 0 #4d1f78;
+    transition: transform 0.1s;
+}
+.btn:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+.result-container {
+    margin-top: 30px;
+    text-align: left;
+    display: none;
+}
+.result-title {
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 2px solid #8e3add;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 14px;
+}
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 13px;
+    color: #666;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ddd;
+    margin-top: 15px;
+}
+.item-name {
+    flex: 2;
+    text-align: left;
+}
+.item-price, .item-count, .item-subtotal {
+    flex: 1;
+    text-align: right;
+}
+
+.total-container {
+    margin-top: 20px;
+    background: #fff0f2;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #dbb5ff;
+}
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.final-total {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d2143a;
+}
+
+.error-container {
+    text-align: center;
+    padding: 20px 0;
+}
+.error-title {
+    font-size: 40pt;
+    font-weight: bold;
+    color: #ff0000;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+.error-subtitle {
+    font-size: 12pt;
+    color: #888888;
+    margin: 0;
+}
